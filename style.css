@@ -130,6 +130,8 @@ body {
   background-position: center;
 }
 
+
+
 .characters-container{
   height: auto;
   width: 100%;
@@ -144,9 +146,11 @@ body {
   padding: 10vmin 0;
   backdrop-filter: blur(5px);
   border-radius: 11%;
-  /* box-shadow: 0px 0px 40px rgba(58, 4, 4, 0.2); */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  
 }
+
+
 
 .character-card-wrapper{
   display: inline-block;
@@ -172,6 +176,25 @@ body {
   transition: transform 0.3s ease;
   isolation: isolate;
   clip-path: inset(0 round 25%);
+  animation: fadeIn 3s ease-in-out both;
+}
+
+@supports (animation-timeline: view()) {
+  .character-card {
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -236,7 +259,7 @@ footer{
   justify-content: center;
   color: #FFF;
   background-color: #121212;
-  font-size: max(1.5vmin, 12px);
+  font-size: max(2vmin, 10px);
   font-family: 'CC Wild Words Roman', sans-serif;
 }
 
@@ -248,13 +271,40 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20vmin;
-  padding: 5vmax 0;
+  gap: 5vmax;
+  padding: 3vmax 10%;
   background-color: var(--dark-obsidian);
   color: #FFF;
-  font-size: max(1.5vmin, 12px);
+  font-size: max(0.9vmax, 10px);
   font-family: 'CC Wild Words Roman', sans-serif;
 
 }
 
+.footer-links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vmin;
+  font-size: max(1.5vmin, 12px);
+  text-decoration: none;
+}
+
+.footer-links a{
+  color: #FFF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover{
+  color: var(--crimson);
+}
+
+
+@media (max-width: 715px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 2vmin;
+    padding: 5vmin 0;
+  }
+}
 
